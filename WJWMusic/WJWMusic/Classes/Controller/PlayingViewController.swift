@@ -94,7 +94,7 @@ extension PlayingViewController {
 // MARK:- 对定时器的操作
 extension PlayingViewController {
     private func addProgressTimer() {
-        progressTimer = NSTimer(timeInterval: 1.0, target: self, selector: "updateProgressInfo", userInfo: nil, repeats: true)
+        progressTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(PlayingViewController.updateProgressInfo), userInfo: nil, repeats: true)
         NSRunLoop.mainRunLoop().addTimer(progressTimer!, forMode: NSRunLoopCommonModes)
     }
     
@@ -112,4 +112,53 @@ extension PlayingViewController {
         progressView.value = Float(player.currentTime / player.duration)
     }
 }
+
+// MARK:- 事件监听函数
+extension PlayingViewController {
+    
+    @IBAction func sliderDownClick(sender: UISlider) {
+        removeProgressTimer()
+    }
+    
+    
+    @IBAction func SliderTouchUpInsideClick(sender: UISlider) {
+        // 1.获取当前拖拽的进度
+        let showTime = Double(sender.value) * (player?.duration ?? 0)
+        player?.currentTime = showTime
+        
+        // 2.添加定时器
+        addProgressTimer()
+        
+    }
+    
+    @IBAction func SliderValueChangedClick(sender: UISlider) {
+        // 1.获取当前拖拽的进度
+        let value = Double(sender.value)
+        
+        // 2.根据进度计算时间
+        let showTime = value * (player?.duration ?? 0)
+        
+        // 3.显示当前的进度的时间
+        curTime_Lable.text = timStrWithTime(showTime)
+    }
+    
+    
+    @IBAction func SliderTapClick(sender: UITapGestureRecognizer) {
+        
+        // 1.获取点击的x的位置
+        let x = sender.locationInView(progressView).x
+        
+        // 2.计算比例
+        let ratio = Double( x / progressView.bounds.width)
+        
+        // 3.计算当前需要播放的时间
+        player?.currentTime = (player?.duration ?? 0) * ratio
+        
+        // 4.更新进度
+        updateProgressInfo()
+    }
+    
+}
+
+
 

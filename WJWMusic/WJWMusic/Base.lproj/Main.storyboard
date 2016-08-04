@@ -113,10 +113,17 @@
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XyD-eq-gGb">
                                         <rect key="frame" x="58" y="10" width="484" height="31"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="4UF-O1-quc"/>
                                         </constraints>
                                         <color key="minimumTrackTintColor" red="0.17647058823529413" green="0.72549019607843135" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="SliderTouchUpInsideClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9O2-Ib-rOg"/>
+                                            <action selector="SliderValueChangedClick:" destination="BYZ-38-t0r" eventType="valueChanged" id="6Ji-Lw-q7k"/>
+                                            <action selector="sliderDownClick:" destination="BYZ-38-t0r" eventType="touchDown" id="rrx-HM-6RM"/>
+                                            <outletCollection property="gestureRecognizers" destination="S2n-rs-80K" appends="YES" id="4ai-9f-a5Y"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaj-fn-sX0">
                                         <rect key="frame" x="15" y="21" width="30" height="12"/>
@@ -208,6 +215,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="S2n-rs-80K">
+                    <connections>
+                        <action selector="SliderTapClick:" destination="BYZ-38-t0r" id="NDK-ZS-pLy"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="276" y="371"/>
         </scene>
