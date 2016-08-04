@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dzq.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZRQ-aQ-p5G">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dzq.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZRQ-aQ-p5G" userLabel="背景图片">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="DKd-Tv-8z2">
@@ -111,7 +111,7 @@
                                         <state key="normal" image="player_btn_pre_normal"/>
                                         <state key="highlighted" image="player_btn_pre_highlight"/>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XyD-eq-gGb">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XyD-eq-gGb">
                                         <rect key="frame" x="58" y="10" width="484" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="4UF-O1-quc"/>
@@ -160,7 +160,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dzq.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="c4g-4I-FPV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dzq.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="c4g-4I-FPV" userLabel="头像">
                                 <rect key="frame" x="184" y="130" width="232" height="232"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="c4g-4I-FPV" secondAttribute="height" multiplier="1:1" id="Wiw-O2-Sfm"/>
@@ -197,8 +197,14 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="IconViewImage" destination="c4g-4I-FPV" id="eYp-cb-xWc"/>
+                        <outlet property="SongName_Lable" destination="Gct-pb-zBa" id="fFx-9f-OvC"/>
+                        <outlet property="bgImageView" destination="ZRQ-aQ-p5G" id="Zc0-OS-Yw0"/>
+                        <outlet property="curTime_Lable" destination="oaj-fn-sX0" id="ja7-Vf-FRF"/>
                         <outlet property="iconView" destination="c4g-4I-FPV" id="npF-92-K7l"/>
                         <outlet property="progressView" destination="XyD-eq-gGb" id="BQY-5n-w3H"/>
+                        <outlet property="singerName_Lable" destination="S3w-Yd-Ret" id="6Ta-XD-3Sv"/>
+                        <outlet property="totalTime_Lable" destination="ewB-hh-dYK" id="vMy-fC-re4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

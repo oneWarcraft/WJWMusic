@@ -55,6 +55,7 @@
 		0C5A2A781D525FA100EA95E8 /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5A2A771D525FA100EA95E8 /* PlayingViewController.swift */; };
 		0C5A2A7A1D52620E00EA95E8 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5A2A791D52620E00EA95E8 /* MusicModel.swift */; };
 		0C5A2A7C1D52636D00EA95E8 /* MusicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5A2A7B1D52636D00EA95E8 /* MusicTool.swift */; };
+		0C6573B81D536CE00074167E /* MusicPlayerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6573B71D536CE00074167E /* MusicPlayerTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		0C5A2A771D525FA100EA95E8 /* PlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
 		0C5A2A791D52620E00EA95E8 /* MusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
 		0C5A2A7B1D52636D00EA95E8 /* MusicTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTool.swift; sourceTree = "<group>"; };
+		0C6573B71D536CE00074167E /* MusicPlayerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5A2A7B1D52636D00EA95E8 /* MusicTool.swift */,
+				0C6573B71D536CE00074167E /* MusicPlayerTool.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C5A29B31D52401200EA95E8 /* AppDelegate.swift in Sources */,
+				0C6573B81D536CE00074167E /* MusicPlayerTool.swift in Sources */,
 				0C5A2A7C1D52636D00EA95E8 /* MusicTool.swift in Sources */,
 				0C5A2A781D525FA100EA95E8 /* PlayingViewController.swift in Sources */,
 				0C5A2A7A1D52620E00EA95E8 /* MusicModel.swift in Sources */,
@@ -535,6 +539,7 @@
 				0C5A29C31D52401200EA95E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
