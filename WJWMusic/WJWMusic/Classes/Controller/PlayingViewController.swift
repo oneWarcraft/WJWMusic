@@ -25,6 +25,8 @@ class PlayingViewController: UIViewController {
     @IBOutlet weak var curTime_Lable: UILabel!
     @IBOutlet weak var totalTime_Lable: UILabel!
     
+    @IBOutlet weak var playOrPauseBTN: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,6 +98,8 @@ extension PlayingViewController {
     private func addProgressTimer() {
         progressTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(PlayingViewController.updateProgressInfo), userInfo: nil, repeats: true)
         NSRunLoop.mainRunLoop().addTimer(progressTimer!, forMode: NSRunLoopCommonModes)
+        
+        updateProgressInfo()
     }
     
     private func removeProgressTimer() {
@@ -160,5 +164,51 @@ extension PlayingViewController {
     
 }
 
-
+// 响应按钮点击事件
+extension PlayingViewController {
+    
+    @IBAction func playOrPauseBTNClick(sender: UIButton) {
+        
+        sender.selected = !playOrPauseBTN.selected
+        
+        startPlayingMusic()
+        
+        if sender.selected
+        {
+            player?.pause()
+            removeProgressTimer()
+        }
+        else
+        {
+            player?.play()
+            addProgressTimer()
+        }
+    }
+    
+    @IBAction func getPreviousSongBTNClick(sender: UIButton)
+    {
+        // 1.获取上一首歌曲
+        guard let previousSong = MusicTool.getPreviousSong() else {
+            return
+        }
+        
+        MusicTool.currentMusic = previousSong
+        
+        // 2.播放歌曲
+        startPlayingMusic()
+    }
+    
+    @IBAction func getNextSongBTNClick(sender: UIButton)
+    {
+        // 1.获取上一首歌曲
+        guard let nextSong = MusicTool.getNextSong() else {
+            return
+        }
+        
+        MusicTool.currentMusic = nextSong
+        
+        // 2.播放歌曲
+        startPlayingMusic()
+    }
+}
 
