@@ -42,6 +42,13 @@ class PlayingViewController: UIViewController {
         return .LightContent
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 添加iconView的旋转动画
+        addIconViewAnimation()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -57,6 +64,20 @@ extension PlayingViewController {
         iconView.layer.masksToBounds = true
         iconView.layer.borderWidth = 10
         iconView.layer.borderColor = UIColor.darkGrayColor().CGColor
+    }
+    
+    private func addIconViewAnimation() {
+        // 1.创建动画
+        let rotationAnim = CABasicAnimation(keyPath: "transform.rotation.z")
+        
+        // 2.给动画设置属性
+        rotationAnim.fromValue = 0
+        rotationAnim.toValue = M_PI * 2
+        rotationAnim.repeatCount = MAXFLOAT
+        rotationAnim.duration = 30
+        
+        // 3.将动画添加到layer中
+        iconView.layer.addAnimation(rotationAnim, forKey: nil)
     }
 }
 
@@ -177,12 +198,20 @@ extension PlayingViewController {
         {
             player?.pause()
             removeProgressTimer()
+            
+            // 暂停动画
+            iconView.layer.pauseAnim()
         }
         else
         {
             player?.play()
             addProgressTimer()
+            
+            // 恢复动画
+            iconView.layer.resumeAnim()
         }
+        
+
     }
     
     @IBAction func getPreviousSongBTNClick(sender: UIButton)
