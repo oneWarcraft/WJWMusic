@@ -27,6 +27,11 @@ class PlayingViewController: UIViewController {
     
     @IBOutlet weak var playOrPauseBTN: UIButton!
     
+    @IBOutlet weak var scrollViewControl: LyricScrollView!
+
+    @IBOutlet weak var lyrics_Lable: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +40,9 @@ class PlayingViewController: UIViewController {
         
         // 展示数据和播放歌曲
         startPlayingMusic()
+        
+        // 设置歌词滚动范围
+        scrollViewControl.contentSize = CGSize(width: UIScreen.mainScreen().bounds.width * 2, height: 0)
     }
     
     // 修改状态栏颜色
@@ -104,6 +112,7 @@ extension PlayingViewController {
         totalTime_Lable.text = timStrWithTime(player.duration)
         
         // 5.添加监听进度的定时器
+        removeProgressTimer()
         addProgressTimer()
     }
     
@@ -238,6 +247,19 @@ extension PlayingViewController {
         
         // 2.播放歌曲
         startPlayingMusic()
+    }
+}
+
+// MARK:- 监听歌词的滚动
+extension PlayingViewController : UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+
+        let offsetX = scrollViewControl.contentOffset.x
+        
+        let ratio = offsetX / UIScreen.mainScreen().bounds.width
+        
+        iconView.alpha = 1 - ratio
+        lyrics_Lable.alpha = 1 - ratio
     }
 }
 

@@ -30,7 +30,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNk-n0-o12">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPC-yn-4NN">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPC-yn-4NN" userLabel="隐藏">
                                         <rect key="frame" x="30" y="20" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="HOt-HE-Kli"/>
@@ -38,7 +38,7 @@
                                         </constraints>
                                         <state key="normal" image="miniplayer_btn_playlist_close_b"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxm-8F-vAk">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxm-8F-vAk" userLabel="更多">
                                         <rect key="frame" x="510" y="20" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="Oed-d8-wRe"/>
@@ -46,7 +46,7 @@
                                         </constraints>
                                         <state key="normal" image="main_tab_more"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月半小夜曲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-pb-zBa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月半小夜曲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-pb-zBa" userLabel="歌曲名字">
                                         <rect key="frame" x="250" y="20" width="100" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="Y7Q-Pm-nTi"/>
@@ -56,8 +56,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邓紫棋" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3w-Yd-Ret">
-                                        <rect key="frame" x="259.5" y="50" width="80" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="邓紫棋" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3w-Yd-Ret" userLabel="歌手名字">
+                                        <rect key="frame" x="259" y="50" width="80" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="BEo-MV-cMR"/>
                                             <constraint firstAttribute="height" constant="16" id="tuD-65-6dO"/>
@@ -81,7 +81,7 @@
                                     <constraint firstItem="S3w-Yd-Ret" firstAttribute="centerX" secondItem="Gct-pb-zBa" secondAttribute="centerX" id="zbD-Ip-wr3"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lR-pi-GIW">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lR-pi-GIW" userLabel="下面第三部分">
                                 <rect key="frame" x="0.0" y="440" width="600" height="160"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5Q-gS-bhr">
@@ -182,11 +182,20 @@
                                     <constraint firstAttribute="width" secondItem="c4g-4I-FPV" secondAttribute="height" multiplier="1:1" id="Wiw-O2-Sfm"/>
                                 </constraints>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqs-cu-rlg" customClass="LyricScrollView" customModule="WJWMusic" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="100" width="600" height="340"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="REX-L2-LCY"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NNk-n0-o12" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="12p-en-B9J"/>
+                            <constraint firstItem="cqs-cu-rlg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5QJ-GE-kUa"/>
+                            <constraint firstItem="cqs-cu-rlg" firstAttribute="top" secondItem="NNk-n0-o12" secondAttribute="bottom" id="AQi-ya-gSc"/>
                             <constraint firstAttribute="trailing" secondItem="3lR-pi-GIW" secondAttribute="trailing" id="B2N-y5-UEI"/>
+                            <constraint firstItem="3lR-pi-GIW" firstAttribute="top" secondItem="cqs-cu-rlg" secondAttribute="bottom" id="EQY-9x-3qG"/>
                             <constraint firstItem="ZRQ-aQ-p5G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GN2-mT-ubf"/>
                             <constraint firstItem="ZRQ-aQ-p5G" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GhS-Ne-lr5"/>
                             <constraint firstItem="NNk-n0-o12" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="JH2-GD-ZVu"/>
@@ -196,6 +205,7 @@
                             <constraint firstAttribute="trailing" secondItem="NNk-n0-o12" secondAttribute="trailing" id="T33-Ml-fV5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZRQ-aQ-p5G" secondAttribute="bottom" id="TKj-7t-6iB"/>
                             <constraint firstItem="3lR-pi-GIW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yhr-6c-gKu"/>
+                            <constraint firstAttribute="trailing" secondItem="cqs-cu-rlg" secondAttribute="trailing" id="eHP-iL-a3Y"/>
                             <constraint firstAttribute="bottom" secondItem="DKd-Tv-8z2" secondAttribute="bottom" id="eln-Xz-5Qa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3lR-pi-GIW" secondAttribute="bottom" id="jDS-qw-wf6"/>
                             <constraint firstAttribute="trailing" secondItem="ZRQ-aQ-p5G" secondAttribute="trailing" id="jvv-lh-W35"/>
@@ -218,8 +228,10 @@
                         <outlet property="bgImageView" destination="ZRQ-aQ-p5G" id="Zc0-OS-Yw0"/>
                         <outlet property="curTime_Lable" destination="oaj-fn-sX0" id="ja7-Vf-FRF"/>
                         <outlet property="iconView" destination="c4g-4I-FPV" id="npF-92-K7l"/>
+                        <outlet property="lyrics_Lable" destination="92Q-f9-1Ae" id="oVl-gc-l4e"/>
                         <outlet property="playOrPauseBTN" destination="K5Q-gS-bhr" id="HYC-Wj-uLP"/>
                         <outlet property="progressView" destination="XyD-eq-gGb" id="BQY-5n-w3H"/>
+                        <outlet property="scrollViewControl" destination="cqs-cu-rlg" id="biI-IY-9Ir"/>
                         <outlet property="singerName_Lable" destination="S3w-Yd-Ret" id="6Ta-XD-3Sv"/>
                         <outlet property="totalTime_Lable" destination="ewB-hh-dYK" id="vMy-fC-re4"/>
                     </connections>
