@@ -10,6 +10,11 @@ import UIKit
 
 private let LrcTableViewCellID = "LrcTableViewCell"
 
+protocol LrcScrollViewDelegate : class {
+    func lrcScrollView(lrcView : LyricScrollView, currentLrcText : String)
+    func lrcScrollView(lrcView : LyricScrollView, progress : Double)
+}
+
 class LyricScrollView: UIScrollView {
     
     private lazy var LyricTableView : UITableView = UITableView()
@@ -24,6 +29,8 @@ class LyricScrollView: UIScrollView {
 //        super.init(coder: aDecoder)
 //    }
     // MARK:- 定义属性
+    weak var lrcDelegate : LrcScrollViewDelegate?
+    
     var lrclines : [Lrcline]?
     var lrcfileName : String = "" {
         didSet {
@@ -72,7 +79,9 @@ class LyricScrollView: UIScrollView {
                     
                     // 滚动到对应的位置
                     LyricTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
-                    
+                   
+                    // 通知代理,切换歌词
+                    lrcDelegate?.lrcScrollView(self, currentLrcText: currentLrcline.lrcText)
                 }
                 
                 // 2.4.如果正在显示某一句歌词,那么就给label添加颜色的进度
@@ -89,9 +98,10 @@ class LyricScrollView: UIScrollView {
                     
                     cell.lrcLable.progress = progress
                     
+                    // 2.4.3.通知代理,当前的进度
+                    lrcDelegate?.lrcScrollView(self, progress: progress)
                 }
             }
-            
         }
     }
     

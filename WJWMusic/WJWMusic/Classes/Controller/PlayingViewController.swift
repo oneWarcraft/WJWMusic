@@ -29,7 +29,7 @@ class PlayingViewController: UIViewController {
     
     @IBOutlet weak var scrollViewControl: LyricScrollView!
 
-    @IBOutlet weak var lyrics_Lable: UILabel!
+    @IBOutlet weak var lyrics_Lable: LrcLable!
     
     
     override func viewDidLoad() {
@@ -43,6 +43,7 @@ class PlayingViewController: UIViewController {
         
         // 设置歌词滚动范围
         scrollViewControl.contentSize = CGSize(width: UIScreen.mainScreen().bounds.width * 2, height: 0)
+        scrollViewControl.lrcDelegate = self
     }
     
     // 修改状态栏颜色
@@ -277,7 +278,7 @@ extension PlayingViewController {
 }
 
 // MARK:- 监听歌词的滚动
-extension PlayingViewController : UIScrollViewDelegate {
+extension PlayingViewController : UIScrollViewDelegate, LrcScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
 
         let offsetX = scrollViewControl.contentOffset.x
@@ -287,5 +288,20 @@ extension PlayingViewController : UIScrollViewDelegate {
         iconView.alpha = 1 - ratio
         lyrics_Lable.alpha = 1 - ratio
     }
+    
+    func lrcScrollView(lrcView: LyricScrollView, currentLrcText: String) {
+        lyrics_Lable.text = currentLrcText
+    }
+    
+    func lrcScrollView(lrcView: LyricScrollView, progress: Double) {
+        lyrics_Lable.progress = progress
+    }
+//    func lrcScrollView(lrcView: LyricScrollView, currentLrcText: String) {
+//        lyrics_Lable.text = currentLrcText
+//    }
+//    
+//    func lrcScrollView(lrcView: LyricScrollView, progress: Double) {
+//        lyrics_Lable.progress = progress
+//    }
 }
 

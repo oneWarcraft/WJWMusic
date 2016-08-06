@@ -167,8 +167,8 @@
                                     <constraint firstItem="ewB-hh-dYK" firstAttribute="centerY" secondItem="XyD-eq-gGb" secondAttribute="centerY" constant="1" id="xAU-R6-bMJ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌词的Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92Q-f9-1Ae">
-                                <rect key="frame" x="253" y="392" width="93" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌词的Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92Q-f9-1Ae" customClass="LrcLable" customModule="WJWMusic" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="392" width="600" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="Z77-0t-Ic6"/>
                                 </constraints>
@@ -198,6 +198,7 @@
                             <constraint firstItem="3lR-pi-GIW" firstAttribute="top" secondItem="cqs-cu-rlg" secondAttribute="bottom" id="EQY-9x-3qG"/>
                             <constraint firstItem="ZRQ-aQ-p5G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GN2-mT-ubf"/>
                             <constraint firstItem="ZRQ-aQ-p5G" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GhS-Ne-lr5"/>
+                            <constraint firstAttribute="trailing" secondItem="92Q-f9-1Ae" secondAttribute="trailing" id="H6M-iM-aOC"/>
                             <constraint firstItem="NNk-n0-o12" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="JH2-GD-ZVu"/>
                             <constraint firstItem="3lR-pi-GIW" firstAttribute="top" secondItem="92Q-f9-1Ae" secondAttribute="bottom" constant="30" id="K4n-Xh-yd7"/>
                             <constraint firstItem="DKd-Tv-8z2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="N8w-b6-920"/>
@@ -207,6 +208,7 @@
                             <constraint firstItem="3lR-pi-GIW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yhr-6c-gKu"/>
                             <constraint firstAttribute="trailing" secondItem="cqs-cu-rlg" secondAttribute="trailing" id="eHP-iL-a3Y"/>
                             <constraint firstAttribute="bottom" secondItem="DKd-Tv-8z2" secondAttribute="bottom" id="eln-Xz-5Qa"/>
+                            <constraint firstItem="92Q-f9-1Ae" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eux-8e-tKs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3lR-pi-GIW" secondAttribute="bottom" id="jDS-qw-wf6"/>
                             <constraint firstAttribute="trailing" secondItem="ZRQ-aQ-p5G" secondAttribute="trailing" id="jvv-lh-W35"/>
                             <constraint firstItem="DKd-Tv-8z2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kmG-Ky-VJk"/>
