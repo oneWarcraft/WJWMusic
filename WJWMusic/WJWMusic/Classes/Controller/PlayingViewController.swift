@@ -14,6 +14,7 @@ class PlayingViewController: UIViewController {
     // MARK:- 定义属性
     var progressTimer : NSTimer?
     weak var player : AVAudioPlayer?
+    var lrcTimer : CADisplayLink?
     
     
     @IBOutlet weak var iconView: UIImageView!
@@ -117,6 +118,9 @@ extension PlayingViewController {
         
         // 6.将歌词文件的名称传递LrcScrollView
         scrollViewControl.lrcfileName = currentMusic.lrcname
+        
+        // 7. 添加歌词定时器
+        addLrcTimer()
     }
     
     private func timStrWithTime(time : NSTimeInterval) -> String {
@@ -128,6 +132,7 @@ extension PlayingViewController {
 
 // MARK:- 对定时器的操作
 extension PlayingViewController {
+    // 1. 当前音乐播放进度定时器
     private func addProgressTimer() {
         progressTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(PlayingViewController.updateProgressInfo), userInfo: nil, repeats: true)
         NSRunLoop.mainRunLoop().addTimer(progressTimer!, forMode: NSRunLoopCommonModes)
@@ -147,6 +152,21 @@ extension PlayingViewController {
         curTime_Lable.text = timStrWithTime(player.currentTime)
         
         progressView.value = Float(player.currentTime / player.duration)
+    }
+    
+    // 2. 歌词播放进度定时器
+    private func addLrcTimer() {
+        lrcTimer = CADisplayLink(target: self, selector: #selector(PlayingViewController.updateLrc))
+        lrcTimer?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
+    }
+    
+    private func removeLrcTimer() {
+        lrcTimer?.invalidate()
+        lrcTimer = nil
+    }
+    
+    @objc private func updateLrc() {
+        scrollViewControl.currentTime = player?.currentTime ?? 0
     }
 }
 
@@ -213,6 +233,8 @@ extension PlayingViewController {
             
             // 暂停动画
             iconView.layer.pauseAnim()
+            
+            removeLrcTimer()
         }
         else
         {
@@ -221,6 +243,8 @@ extension PlayingViewController {
             
             // 恢复动画
             iconView.layer.resumeAnim()
+            
+            addLrcTimer()
         }
         
 

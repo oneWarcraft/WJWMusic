@@ -14,6 +14,8 @@ class LyricScrollView: UIScrollView {
     
     private lazy var LyricTableView : UITableView = UITableView()
     
+    var currentTime : NSTimeInterval = 0
+    
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
 //    }
