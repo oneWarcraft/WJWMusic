@@ -39,6 +39,9 @@ class LyricScrollView: UIScrollView {
             
             // 2. 刷新表格
             LyricTableView.reloadData()
+            
+            currentIndex = 0
+            LyricTableView.contentOffset = CGPoint(x: 0, y: -bounds.height * 0.5)
         }
     }
     

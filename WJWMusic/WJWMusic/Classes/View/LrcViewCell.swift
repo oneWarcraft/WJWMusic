@@ -38,8 +38,8 @@ extension LrcViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        lrcLable.center = contentView.center
         lrcLable.sizeToFit()
+        lrcLable.center = contentView.center
     }
 }
 
