@@ -21,6 +21,19 @@ class LyricScrollView: UIScrollView {
 //    required init?(coder aDecoder: NSCoder) {
 //        super.init(coder: aDecoder)
 //    }
+    // MARK:- 定义属性
+    var lrclines : [Lrcline]?
+    var lrcfileName : String = "" {
+        didSet {
+            // 1. 获取歌词
+            lrclines = LrcTool.lrcToolWithLrcName(lrcfileName)
+            
+            // 2. 刷新表格
+            LyricTableView.reloadData()
+        }
+    }
+    
+    
     
     // MARK:- 重写构造函数
     override func awakeFromNib() {
@@ -53,7 +66,7 @@ extension LyricScrollView {
 
 extension LyricScrollView : UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return lrclines?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -67,7 +80,7 @@ extension LyricScrollView : UITableViewDataSource {
         cell.selectionStyle = .None
         
         // 2.给cell设置数据
-        cell.textLabel?.text = "测试数据：\(indexPath.row)"
+        cell.textLabel?.text = lrclines![indexPath.row].lrcText
         
         return cell
     }

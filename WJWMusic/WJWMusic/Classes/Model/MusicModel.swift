@@ -12,6 +12,8 @@ class MusicModel: NSObject {
     
     var name : String = ""
     var filename : String = ""
+    var lrcname : String = ""
+    
     var singer : String = ""
     var singerIcon : String = ""
     var icon : String = ""

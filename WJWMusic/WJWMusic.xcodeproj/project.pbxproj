@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0296931D55CD77002EC18C /* Lrcline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0296921D55CD77002EC18C /* Lrcline.swift */; };
+		0C0296951D55D17F002EC18C /* LrcTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0296941D55D17F002EC18C /* LrcTool.swift */; };
 		0C5A29B31D52401200EA95E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5A29B21D52401200EA95E8 /* AppDelegate.swift */; };
 		0C5A29B81D52401200EA95E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5A29B61D52401200EA95E8 /* Main.storyboard */; };
 		0C5A29BA1D52401200EA95E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C5A29B91D52401200EA95E8 /* Assets.xcassets */; };
@@ -61,6 +63,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0296921D55CD77002EC18C /* Lrcline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lrcline.swift; sourceTree = "<group>"; };
+		0C0296941D55D17F002EC18C /* LrcTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LrcTool.swift; sourceTree = "<group>"; };
 		0C5A29AF1D52401200EA95E8 /* WJWMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WJWMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C5A29B21D52401200EA95E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C5A29B71D52401200EA95E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5A2A791D52620E00EA95E8 /* MusicModel.swift */,
+				0C0296921D55CD77002EC18C /* Lrcline.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				0C5A2A7B1D52636D00EA95E8 /* MusicTool.swift */,
 				0C6573B71D536CE00074167E /* MusicPlayerTool.swift */,
 				0C7211071D54C427000CC167 /* CALayer-Extension.swift */,
+				0C0296941D55D17F002EC18C /* LrcTool.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -387,7 +393,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C0296951D55D17F002EC18C /* LrcTool.swift in Sources */,
 				0C5A29B31D52401200EA95E8 /* AppDelegate.swift in Sources */,
+				0C0296931D55CD77002EC18C /* Lrcline.swift in Sources */,
 				0C5D4A701D558DFE0054305F /* LyricScrollView.swift in Sources */,
 				0C6573B81D536CE00074167E /* MusicPlayerTool.swift in Sources */,
 				0C5A2A7C1D52636D00EA95E8 /* MusicTool.swift in Sources */,

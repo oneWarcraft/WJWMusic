@@ -112,8 +112,11 @@ extension PlayingViewController {
         totalTime_Lable.text = timStrWithTime(player.duration)
         
         // 5.添加监听进度的定时器
-        removeProgressTimer()
+//        removeProgressTimer()
         addProgressTimer()
+        
+        // 6.将歌词文件的名称传递LrcScrollView
+        scrollViewControl.lrcfileName = currentMusic.lrcname
     }
     
     private func timStrWithTime(time : NSTimeInterval) -> String {
