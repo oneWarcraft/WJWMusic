@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 
+private let IconViewAnim = "IconViewAnim"
+
 class PlayingViewController: UIViewController {
     
     // MARK:- 定义属性
@@ -51,12 +53,12 @@ class PlayingViewController: UIViewController {
         return .LightContent
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // 添加iconView的旋转动画
-        addIconViewAnimation()
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        // 添加iconView的旋转动画
+//        addIconViewAnimation()
+//    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -86,13 +88,14 @@ extension PlayingViewController {
         rotationAnim.duration = 30
         
         // 3.将动画添加到layer中
-        iconView.layer.addAnimation(rotationAnim, forKey: nil)
+        iconView.layer.addAnimation(rotationAnim, forKey: IconViewAnim)
     }
 }
 
 // 开始播放歌曲，并展示数据
 extension PlayingViewController {
-    private func startPlayingMusic () {
+    private func startPlayingMusic ()
+    {
         guard let currentMusic = MusicTool.currentMusic else {
             return
         }
@@ -108,18 +111,27 @@ extension PlayingViewController {
         }
         
         self.player = player
+        self.player?.delegate = self
         
         // 4.显示总时长
         totalTime_Lable.text = timStrWithTime(player.duration)
         
+        // 5. 添加iconView的旋转动画
+        if iconView.layer.animationForKey(IconViewAnim) != nil {
+            iconView.layer.removeAnimationForKey(IconViewAnim)
+            
+        }
+        addIconViewAnimation()
+        
         // 5.添加监听进度的定时器
-//        removeProgressTimer()
+        removeProgressTimer()
         addProgressTimer()
         
         // 6.将歌词文件的名称传递LrcScrollView
         scrollViewControl.lrcfileName = currentMusic.lrcname
         
         // 7. 添加歌词定时器
+        removeLrcTimer()
         addLrcTimer()
     }
     
@@ -188,18 +200,7 @@ extension PlayingViewController {
         
     }
     
-    @IBAction func SliderValueChangedClick(sender: UISlider) {
-        // 1.获取当前拖拽的进度
-        let value = Double(sender.value)
-        
-        // 2.根据进度计算时间
-        let showTime = value * (player?.duration ?? 0)
-        
-        // 3.显示当前的进度的时间
-        curTime_Lable.text = timStrWithTime(showTime)
-    }
-    
-    
+
     @IBAction func SliderTapClick(sender: UITapGestureRecognizer) {
         
         // 1.获取点击的x的位置
@@ -213,8 +214,23 @@ extension PlayingViewController {
         
         // 4.更新进度
         updateProgressInfo()
+        
+        if progressTimer == nil {
+            addProgressTimer()
+        }
+
     }
-    
+
+    @IBAction func SliderValueChangedClick(sender: UISlider) {
+        // 1.获取当前拖拽的进度
+        let value = Double(sender.value)
+        
+        // 2.根据进度计算时间
+        let showTime = value * (player?.duration ?? 0)
+        
+        // 3.显示当前的进度的时间
+        curTime_Lable.text = timStrWithTime(showTime)
+    }
 }
 
 // 响应按钮点击事件
@@ -263,8 +279,7 @@ extension PlayingViewController {
         startPlayingMusic()
     }
     
-    @IBAction func getNextSongBTNClick(sender: UIButton)
-    {
+    @IBAction func getNextSongBTNClick() {
         // 1.获取上一首歌曲
         guard let nextSong = MusicTool.getNextSong() else {
             return
@@ -304,4 +319,15 @@ extension PlayingViewController : UIScrollViewDelegate, LrcScrollViewDelegate {
 //        lyrics_Lable.progress = progress
 //    }
 }
+
+extension PlayingViewController : AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        getNextSongBTNClick()
+    }
+}
+
+
+
+
+
 

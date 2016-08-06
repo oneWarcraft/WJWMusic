@@ -105,7 +105,7 @@
                                         <state key="normal" image="player_btn_next_normal"/>
                                         <state key="highlighted" image="player_btn_next_highlight"/>
                                         <connections>
-                                            <action selector="getNextSongBTNClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NNC-Si-d8I"/>
+                                            <action selector="getNextSongBTNClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="zpE-vF-XnV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOy-dv-xVs">
