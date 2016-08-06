@@ -16,7 +16,6 @@ class PlayingViewController: UIViewController {
     weak var player : AVAudioPlayer?
     var lrcTimer : CADisplayLink?
     
-    
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var progressView: UISlider!
     @IBOutlet weak var IconViewImage: UIImageView!
