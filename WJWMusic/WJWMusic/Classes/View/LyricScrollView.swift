@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let LrcTableViewCell = "LrcTableViewCell"
+private let LrcTableViewCellID = "LrcTableViewCell"
 
 class LyricScrollView: UIScrollView {
     
@@ -44,7 +44,8 @@ class LyricScrollView: UIScrollView {
             
             // 2.将所有的歌词进行遍历
             let count = lrclines.count
-            for i in 0..<count {
+            for i in 0..<count
+            {
                 // 2.1.获取i位置的歌词
                 let currentLrcline = lrclines[i]
                 
@@ -73,6 +74,22 @@ class LyricScrollView: UIScrollView {
                     LyricTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
                     
                 }
+                
+                // 2.4.如果正在显示某一句歌词,那么就给label添加颜色的进度
+                if currentIndex == i
+                {
+                    // 2.4.1.获取当前的进度
+                    let progress = (currentTime - currentLrcline.lrcTime) / (nextLrcline.lrcTime - currentLrcline.lrcTime)
+                    
+                    // 2.4.2.将进度给lrcLabel,让label根据进度显示颜色
+                    let indexPath = NSIndexPath(forRow: i, inSection: 0)
+                    guard let cell = LyricTableView.cellForRowAtIndexPath(indexPath) as? LrcViewCell else {
+                        continue
+                    }
+                    
+                    cell.lrcLable.progress = progress
+                    
+                }
             }
             
         }
@@ -97,7 +114,7 @@ extension LyricScrollView {
         // 2.设置tableView属性
         LyricTableView.backgroundColor = UIColor.clearColor()
         LyricTableView.dataSource = self
-        LyricTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: LrcTableViewCell)
+        LyricTableView.registerClass(LrcViewCell.self, forCellReuseIdentifier: LrcTableViewCellID)
         LyricTableView.rowHeight = 35
         LyricTableView.separatorStyle = .None
     }
@@ -117,24 +134,19 @@ extension LyricScrollView : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // 1.创建Cell
-        let cell = tableView.dequeueReusableCellWithIdentifier(LrcTableViewCell, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(LrcTableViewCellID, forIndexPath: indexPath) as! LrcViewCell
 
-        cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel?.font = UIFont.systemFontOfSize(13)
-        cell.textLabel?.textAlignment = .Center
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.selectionStyle = .None
-        
+
         // 2.给cell设置数据
-        cell.textLabel?.text = lrclines![indexPath.row].lrcText
+        cell.lrcLable.text = lrclines![indexPath.row].lrcText
         
         if indexPath.row == currentIndex {
-//            cell.textLabel?.font = UIFont.systemFontOfSize(33)
-            cell.textLabel?.textColor = UIColor.greenColor()
+            cell.lrcLable.font = UIFont.systemFontOfSize(17)
+//            cell.lrcLable.textColor = UIColor.greenColor()
         }else
         {
-//            cell.textLabel?.font = UIFont.systemFontOfSize(13)
-            cell.textLabel?.textColor = UIColor.whiteColor()
+            cell.lrcLable.font = UIFont.systemFontOfSize(13)
+//            cell.lrcLable.textColor = UIColor.whiteColor()
         }
         
         return cell
